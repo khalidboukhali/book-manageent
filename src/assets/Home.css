@@ -1,0 +1,44 @@
+.dashboard {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .dashboard-card {
+    width: 22%;
+    height: 150px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .dashboard-card:hover {
+    transform: translateY(-15px) translateX(-15px);
+  }
+  
+  .dashboard-card-icon {
+    font-size: 36px;
+    margin-right: 10px;
+  }
+  
+  .dashboard-card-info {
+    text-align: center;
+  }
+  
+  .dashboard-card-count {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .dashboard-card-name {
+    font-size: 16px;
+    color: #888;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+  

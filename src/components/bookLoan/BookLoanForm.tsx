@@ -1,33 +1,31 @@
-// ReviewForm.tsx
 import { useState, useEffect } from "react";
 import "../../assets/Form.css";
 import Book from "../../models/Book";
 import User from "../../models/User";
-import ReviewFormData from "../../models/ReviewFormData";
+import BookLoanFormData from "../../models/BookLoanFormData";
 
 interface ModalProps {
   closeModal: () => void;
-  onSubmit: (formData: ReviewFormData) => void;
-  defaultValue?: ReviewFormData;
+  onSubmit: (formData: BookLoanFormData) => void;
+  defaultValue?: BookLoanFormData;
   users: User[];
   books: Book[];
 }
 
-export const ReviewForm: React.FC<ModalProps> = ({
+export const BookLoanForm: React.FC<ModalProps> = ({
   closeModal,
   onSubmit,
   defaultValue,
   users,
   books,
 }) => {
-  const [formState, setFormState] = useState<ReviewFormData>(() => {
+  const [formState, setFormState] = useState<BookLoanFormData>(() => {
     if (defaultValue) {
       return defaultValue;
     } else {
       return {
         userId: "",
         bookId: "",
-        comment: "",
       };
     }
   });
@@ -41,7 +39,7 @@ export const ReviewForm: React.FC<ModalProps> = ({
   }, [defaultValue]);
 
   const validateForm = () => {
-    if (formState.userId && formState.bookId && formState.comment) {
+    if (formState.userId && formState.bookId) {
       setErrors("");
       return true;
     } else {
@@ -50,9 +48,7 @@ export const ReviewForm: React.FC<ModalProps> = ({
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
@@ -109,15 +105,6 @@ export const ReviewForm: React.FC<ModalProps> = ({
               ))}
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="comment">Comment</label>
-            <textarea
-              name="comment"
-              onChange={handleChange}
-              value={formState.comment}
-            />
-          </div>
-
           {errors && <div className="error">{errors}</div>}
           <button type="submit" className="btn">
             Submit

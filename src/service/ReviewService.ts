@@ -1,38 +1,52 @@
-import {reviewInstance} from './ApiProvider'
-import Review from '../models/Review'
+import { reviewInstance } from './ApiProvider'
 
 
 const ReviewService = {
-  
-  getAllReviews: async () => {
-    try {
-        const response = await reviewInstance.get('');
-        return response.data;
-    } catch (error) {
-        console.log("Error: "+error);
-    }
-  },
 
-  
-  getReviewById: async (reviewId: number)=> {
-    const response = await reviewInstance.get(`/${reviewId}`);
-    return response.data.data;
-  },
+    getAllReviews: async () => {
+        try {
+            const response = await reviewInstance.get('');
+            return response.data;
+        } catch (error) {
+            console.log("Error: " + error);
+        }
+    },
 
-  
-  createReview: async (newBook: Omit<Review, 'id'>) => {
-    await reviewInstance.post('', newBook);
-  },
 
-  
-  updateReview: async (bookId: number, updatedReview: Review)=> {
-    await reviewInstance.put(`/${bookId}`, updatedReview);
-  },
+    getReviewById: async (reviewId: number) => {
+        const response = await reviewInstance.get(`/${reviewId}`);
+        return response.data.data;
+    },
 
-  
-  deleteReview: async (reviewId: number)=> {
-    await reviewInstance.delete(`/${reviewId}`);
-  },
+
+    createReview: async (userId: number, bookId: number, reviewDescription: string) => {
+
+        await reviewInstance.post('', null, {
+            params: {
+                userId: userId,
+                bookId: bookId,
+                reviewDescription: reviewDescription
+            }
+        });
+
+    },
+
+
+
+    updateReview: async (reviewId: number, userId: number, bookId: number, newComment: string) => {
+        await reviewInstance.put(`/${reviewId}`, null, {
+            params: {
+                userId: userId,
+                bookId: bookId,
+                newComment: newComment
+            }
+        });
+    },
+
+
+    deleteReview: async (reviewId: number) => {
+        await reviewInstance.delete(`/${reviewId}`);
+    },
 };
 
 export default ReviewService;

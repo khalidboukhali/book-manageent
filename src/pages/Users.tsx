@@ -67,7 +67,7 @@ function Users() {
           editUser={handleEditUser}
         />
         <button onClick={() => setFormOpen(true)} className="btn">
-          Add Room
+          Add new user
         </button>
         {formOpen && (
           <UserForm

@@ -12,3 +12,7 @@ export const booksInstance = axios.create({
 export const reviewInstance = axios.create({
     baseURL: `${baseURL}/reviews`
 });
+
+export const bookLoanInstance = axios.create({
+    baseURL: `${baseURL}/book-loans`
+});

@@ -1,15 +1,15 @@
-// ReviewTable.tsx
+// BookLoanTable.tsx
 import { BsTrashFill, BsPencilFill } from "react-icons/bs";
-import Review from '../../models/Review'
+import BookLoan from '../../models/BookLoan';
 import "../../assets/Table.css";
 
 interface TableProps {
-  reviews: Review[];
-  deleteReview: (id: number) => void;
-  editReview: (id: number) => void;
+  bookLoans: BookLoan[];
+  deleteBookLoan: (id: number) => void;
+  editBookLoan: (id: number) => void;
 }
 
-export const ReviewTable: React.FC<TableProps> = ({ reviews, deleteReview, editReview }) => {
+export const BookLoanTable: React.FC<TableProps> = ({ bookLoans, deleteBookLoan, editBookLoan }) => {
   return (
     <div className="table-wrapper">
       <table className="table">
@@ -17,25 +17,25 @@ export const ReviewTable: React.FC<TableProps> = ({ reviews, deleteReview, editR
           <tr>
             <th>User name</th>
             <th>Book name</th>
-            <th>Comment</th>
+            <th>Date Borrowed</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {reviews.map((review) => (
-            <tr key={review.id}>
-              <td>{review.userName}</td>
-              <td>{review.bookName}</td>
-              <td>{review.comment}</td>
+          {bookLoans.map((bookLoan) => (
+            <tr key={bookLoan.id}>
+              <td>{bookLoan.userName}</td>
+              <td>{bookLoan.bookTitle}</td>
+              <td>{bookLoan.dateBorrowed}</td>
               <td className="fit">
                 <span className="actions">
                   <BsTrashFill
                     className="delete-btn"
-                    onClick={() => deleteReview(review.id)}
+                    onClick={() => deleteBookLoan(bookLoan.id)}
                   />
                   <BsPencilFill
                     className="edit-btn"
-                    onClick={() => editReview(review.id)}
+                    onClick={() => editBookLoan(bookLoan.id)}
                   />
                 </span>
               </td>

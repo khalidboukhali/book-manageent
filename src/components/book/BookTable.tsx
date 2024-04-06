@@ -1,4 +1,5 @@
 import { BsTrashFill, BsPencilFill } from "react-icons/bs";
+
 import Book from '../../models/Book'
 import "../../assets/Table.css";
 
@@ -9,6 +10,7 @@ interface TableProps {
 }
 
 export const BookTable: React.FC<TableProps> = ({ books, deleteBook, editBook }) => {
+
   return (
     <div className="table-wrapper">
       <table className="table">

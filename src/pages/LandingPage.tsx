@@ -15,7 +15,7 @@ import "../assets/LandingPage.css";
 import Home from "./Home";
 import Users from "./Users";
 import Books from "./Books";
-import BookLoan from "./BookLoan";
+import BookLoans from "./BookLoans";
 import Reviews from "./Reviews";
 
 const LandingPage = () => {
@@ -89,7 +89,7 @@ const LandingPage = () => {
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<Users />} />
         <Route path="/books" element={<Books />} />
-        <Route path="/bookLoan" element={<BookLoan />} />
+        <Route path="/bookLoan" element={<BookLoans />} />
         <Route path="/reviews" element={<Reviews />} />
       </Routes>
     </main>
